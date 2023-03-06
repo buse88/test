@@ -6,10 +6,10 @@ services:
     environment:
       LANG: 'C.UTF-8'
     volumes:
-      - ./docker/chatgpt-qq/mirai/bots:/app/bots
-      - ./docker/chatgpt-qq/mirai/config:/app/config
-      - ./docker/chatgpt-qq/mirai/data:/app/data
-      # - /docker/chatgpt-qq/mirai/config.json:/app/config.json # 如果你要修改 mcl 的设置，就解除这个注释
+      - ./mirai/bots:/app/bots
+      - ./mirai/config:/app/config
+      - ./mirai/data:/app/data
+      # - /mirai/config.json:/app/config.json # 如果你要修改 mcl 的设置，就解除这个注释
   chatgpt:
     image: lss233/chatgpt-mirai-qq-bot:browser-version
     restart: always
@@ -19,8 +19,8 @@ services:
     ports:
       - "15400:14500"
     volumes:
-      - ./docker/chatgpt-qq/config.cfg:/app/config.cfg
-      - ./docker/chatgpt-qq/data:/app/data
+      - ./chatgpt-qq/config.cfg:/app/config.cfg
+      - ./chatgpt-qq/data:/app/data
       # - ./fonts:/app/fonts # 如果你想自定义字体，就解除注释
       # - ./presets:/app/presets # 如果你想自定义预设，就解除注释
   watchtower: # [可选] 自动更新
